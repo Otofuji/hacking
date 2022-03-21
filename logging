@@ -1,0 +1,206 @@
+msf6 > db_nmap -v -script vuln 10.0.2.4
+[*] Nmap: Starting Nmap 7.92 ( https://nmap.org ) at 2022-03-21 09:05 EDT
+[*] Nmap: NSE: Loaded 105 scripts for scanning.
+[*] Nmap: NSE: Script Pre-scanning.
+[*] Nmap: Initiating NSE at 09:05
+[*] Nmap: Completed NSE at 09:05, 10.03s elapsed
+[*] Nmap: Initiating NSE at 09:05
+[*] Nmap: Completed NSE at 09:05, 0.00s elapsed
+[*] Nmap: Initiating Ping Scan at 09:05
+[*] Nmap: Scanning 10.0.2.4 [2 ports]
+[*] Nmap: Completed Ping Scan at 09:05, 0.00s elapsed (1 total hosts)
+[*] Nmap: Initiating Parallel DNS resolution of 1 host. at 09:05
+[*] Nmap: Completed Parallel DNS resolution of 1 host. at 09:05, 2.06s elapsed
+[*] Nmap: Initiating Connect Scan at 09:05
+[*] Nmap: Scanning 10.0.2.4 [1000 ports]
+[*] Nmap: Discovered open port 111/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 445/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 5900/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 139/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 25/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 23/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 22/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 3306/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 21/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 53/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 514/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 8180/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 512/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 1099/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 6000/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 8009/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 1524/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 2049/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 513/tcp on 10.0.2.4
+[*] Nmap: Discovered open port 6667/tcp on 10.0.2.4
+[*] Nmap: Completed Connect Scan at 09:05, 0.15s elapsed (1000 total ports)
+[*] Nmap: NSE: Script scanning 10.0.2.4.
+[*] Nmap: Initiating NSE at 09:05
+[*] Nmap: NSE: [tls-ticketbleed] Not running due to lack of privileges.
+[*] Nmap: NSE: [firewall-bypass] lacks privileges.
+[*] Nmap: NSE: [ssl-ccs-injection] No response from server: Unknown TLS protocol version or content type
+[*] Nmap: Completed NSE at 09:54, 2889.79s elapsed
+[*] Nmap: Initiating NSE at 09:54
+[*] Nmap: Completed NSE at 09:54, 0.38s elapsed
+[*] Nmap: Nmap scan report for 10.0.2.4
+[*] Nmap: Host is up (0.0074s latency).
+[*] Nmap: Not shown: 980 closed tcp ports (conn-refused)
+[*] Nmap: PORT     STATE SERVICE
+[*] Nmap: 21/tcp   open  ftp
+[*] Nmap: |_ftp-libopie: ERROR: Script execution failed (use -d to debug)
+[*] Nmap: 22/tcp   open  ssh
+[*] Nmap: 23/tcp   open  telnet
+[*] Nmap: 25/tcp   open  smtp
+[*] Nmap: 53/tcp   open  domain
+[*] Nmap: 111/tcp  open  rpcbind
+[*] Nmap: 139/tcp  open  netbios-ssn
+[*] Nmap: 445/tcp  open  microsoft-ds
+[*] Nmap: 512/tcp  open  exec
+[*] Nmap: 513/tcp  open  login
+[*] Nmap: 514/tcp  open  shell
+[*] Nmap: 1099/tcp open  rmiregistry
+[*] Nmap: | rmi-vuln-classloader:
+[*] Nmap: |   VULNERABLE:
+[*] Nmap: |   RMI registry default configuration remote code execution vulnerability
+[*] Nmap: |     State: VULNERABLE
+[*] Nmap: |       Default configuration of RMI registry allows loading classes from remote URLs which can lead to remote code execution.
+[*] Nmap: |
+[*] Nmap: |     References:
+[*] Nmap: |_      https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/misc/java_rmi_server.rb
+[*] Nmap: 1524/tcp open  ingreslock
+[*] Nmap: 2049/tcp open  nfs
+[*] Nmap: 3306/tcp open  mysql
+[*] Nmap: |_ssl-ccs-injection: No reply from server (TIMEOUT)
+[*] Nmap: 5900/tcp open  vnc
+[*] Nmap: 6000/tcp open  X11
+[*] Nmap: 6667/tcp open  irc
+[*] Nmap: |_irc-unrealircd-backdoor: Looks like trojaned version of unrealircd. See http://seclists.org/fulldisclosure/2010/Jun/277
+[*] Nmap: 8009/tcp open  ajp13
+[*] Nmap: 8180/tcp open  unknown
+[*] Nmap: | http-slowloris-check:
+[*] Nmap: |   VULNERABLE:
+[*] Nmap: |   Slowloris DOS attack
+[*] Nmap: |     State: LIKELY VULNERABLE
+[*] Nmap: |     IDs:  CVE:CVE-2007-6750
+[*] Nmap: |       Slowloris tries to keep many connections to the target web server open and hold
+[*] Nmap: |       them open as long as possible.  It accomplishes this by opening connections to
+[*] Nmap: |       the target web server and sending a partial request. By doing so, it starves
+[*] Nmap: |       the http server's resources causing Denial Of Service.
+[*] Nmap: |
+[*] Nmap: |     Disclosure date: 2009-09-17
+[*] Nmap: |     References:
+[*] Nmap: |       http://ha.ckers.org/slowloris/
+[*] Nmap: |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+[*] Nmap: | http-cookie-flags:
+[*] Nmap: |   /admin/:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/index.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/login.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/account.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin_login.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/home.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin-login.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/adminLogin.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/controlpanel.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/cp.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/index.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/login.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/home.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/controlpanel.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin-login.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/cp.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/account.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/admin_login.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/adminLogin.jsp:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/view/javascript/fckeditor/editor/filemanager/connectors/test.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/includes/FCKeditor/editor/filemanager/upload/test.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |       httponly flag not set
+[*] Nmap: |   /admin/jscript/upload.html:
+[*] Nmap: |     JSESSIONID:
+[*] Nmap: |_      httponly flag not set
+[*] Nmap: | http-enum:
+[*] Nmap: |   /admin/: Possible admin folder
+[*] Nmap: |   /admin/index.html: Possible admin folder
+[*] Nmap: |   /admin/login.html: Possible admin folder
+[*] Nmap: |   /admin/admin.html: Possible admin folder
+[*] Nmap: |   /admin/account.html: Possible admin folder
+[*] Nmap: |   /admin/admin_login.html: Possible admin folder
+[*] Nmap: |   /admin/home.html: Possible admin folder
+[*] Nmap: |   /admin/admin-login.html: Possible admin folder
+[*] Nmap: |   /admin/adminLogin.html: Possible admin folder
+[*] Nmap: |   /admin/controlpanel.html: Possible admin folder
+[*] Nmap: |   /admin/cp.html: Possible admin folder
+[*] Nmap: |   /admin/index.jsp: Possible admin folder
+[*] Nmap: |   /admin/login.jsp: Possible admin folder
+[*] Nmap: |   /admin/admin.jsp: Possible admin folder
+[*] Nmap: |   /admin/home.jsp: Possible admin folder
+[*] Nmap: |   /admin/controlpanel.jsp: Possible admin folder
+[*] Nmap: |   /admin/admin-login.jsp: Possible admin folder
+[*] Nmap: |   /admin/cp.jsp: Possible admin folder
+[*] Nmap: |   /admin/account.jsp: Possible admin folder
+[*] Nmap: |   /admin/admin_login.jsp: Possible admin folder
+[*] Nmap: |   /admin/adminLogin.jsp: Possible admin folder
+[*] Nmap: |   /manager/html/upload: Apache Tomcat (401 Unauthorized)
+[*] Nmap: |   /manager/html: Apache Tomcat (401 Unauthorized)
+[*] Nmap: |   /admin/view/javascript/fckeditor/editor/filemanager/connectors/test.html: OpenCart/FCKeditor File upload
+[*] Nmap: |   /admin/includes/FCKeditor/editor/filemanager/upload/test.html: ASP Simple Blog / FCKeditor File Upload
+[*] Nmap: |   /admin/jscript/upload.html: Lizard Cart/Remote File upload
+[*] Nmap: |_  /webdav/: Potentially interesting folder
+[*] Nmap: Host script results:
+[*] Nmap: |_smb-vuln-regsvc-dos: ERROR: Script execution failed (use -d to debug)
+[*] Nmap: |_smb-vuln-ms10-061: false
+[*] Nmap: |_smb-vuln-ms10-054: false
+[*] Nmap: NSE: Script Post-scanning.
+[*] Nmap: Initiating NSE at 09:54
+[*] Nmap: Completed NSE at 09:54, 0.00s elapsed
+[*] Nmap: Initiating NSE at 09:54
+[*] Nmap: Completed NSE at 09:54, 0.00s elapsed
+[*] Nmap: Read data files from: /usr/bin/../share/nmap
+[*] Nmap: Nmap done: 1 IP address (1 host up) scanned in 2903.07 seconds
+msf6 > 
